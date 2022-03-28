@@ -1,6 +1,5 @@
 from random import randrange
 import pygame
-
 import enemy
 
 class Player:
@@ -16,6 +15,7 @@ class Player:
 		self.hasBombs = False
 		self.bombs = 0
 		self.attack_damage = 3
+		self.maxHealth = 5
 		self.health = 5
 		self.tiles = tiles
 		self.canSwim = False

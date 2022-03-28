@@ -23,9 +23,12 @@ class Item:
 			self.player.hasBombs = True
 			self.player.bombs = 15
 		if self.id == 4:
-			self.player.health = 5
+			self.player.health = self.player.maxHealth
 		if self.id == 5:
-			if self.player.health != 5:
-				self.player.health += random.randint(1, 5 - self.player.health)
+			if self.player.health != self.player.maxHealth:
+				self.player.health += random.randint(1, self.player.maxHealth - self.player.health)
 		if self.id == 6:
-			self.player.bombs = 15 
+			self.player.bombs = 15
+		if self.id == 7:
+			self.player.maxHealth += 2
+			self.player.health = self.player.maxHealth

@@ -117,7 +117,6 @@ class Game:
 					elif self.tileArray[y][x] == 12:
 						self.tiles[y].append(tile.Tile("tiles\\corrupted.png", x, y, \
 						self.screen))
-
 					else:
 						self.tiles[y].append(tile.Tile("tiles\\notfound.png", x, y, \
 						self.screen))
@@ -193,7 +192,7 @@ class Game:
 				self.tickspeed = 0
 				eupdate = None
 				for e in self.enemies:
-					if type(e) != bosses.FinalBoss:
+					if type(e) != bosses.FinalBoss and type(e) != bosses.FirstBoss:
 						eupdate, self.items = e.update(self.items)
 					else:
 						eupdate, self.enemies, self.tileArray = e.update(self.enemies)
@@ -423,10 +422,9 @@ class Game:
 			self.showRoomChange = False
 			self.specialMessage = "room changed!"
 			if self.nextRoom == 13:
-				del self.enemies[0]
-				self.enemies[0].health = 100
+				self.enemies = []
+				self.enemies.append(bosses.FirstBoss(self.screen, self.tiles, self.player, self.tileArray))
 				pygame.mixer.music.load("other\\BossMusicByTobyFox.mp3")
-				self.enemies[0].type = 5
 				pygame.mixer.music.play(-1)
 			if self.nextRoom == 18:
 				self.enemies = []
