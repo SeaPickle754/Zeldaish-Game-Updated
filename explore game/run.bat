@@ -1,3 +1,0 @@
-echo.
-main.py
-pause
