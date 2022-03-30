@@ -6,6 +6,7 @@ import enemy
 import roomLoader
 import button
 import bomb
+import mod
 import time
 import math
 import random
@@ -128,6 +129,7 @@ class Game:
 		self.tickspeed2 = 0
 		self.tickspeed3 = 0
 		self.tickspeed4 = 0
+		self.mod = mod.Mod(self)
 		self.tickspeed5 = 0
 		self.tickspeed6 = 0
 		if not self.debug:
@@ -135,12 +137,14 @@ class Game:
 			self.screen.blit(start_image, start_image.get_rect())
 			pygame.display.flip()
 			time.sleep(random.randint(1,3))
+		self.mod.init()
 		self.update_screen()
 		while(1):
+			self.mod.update()
 			if self.player.rect.x < 0:
 				self.player.rect.x = 0
 			if self.player.rect.x >= 440:
-				self.player.rect.x = 400
+				self.player.rect.x = 400	
 			if self.player.rect.y < 0:
 				self.player.rect.y = 0
 			if self.player.rect.y >= 400:
@@ -152,6 +156,7 @@ class Game:
 				self.cutscene = False
 			self.clock.tick(60)
 			self.check_events()
+			self.mod.update()
 			self.update_screen()
 	def distance(self):
 		distances = []
@@ -405,6 +410,7 @@ class Game:
 		if self.bomb:
 			self.bomb.draw()
 		self.draw_text()
+		self.mod.draw()
 		pygame.Surface.lock(self.screen)
 		pygame.display.flip()
 
