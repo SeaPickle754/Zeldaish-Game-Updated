@@ -76,6 +76,11 @@ class FirstBoss:
 			self.rect.y = randrange(0, 360, 40)
 		if randint(0, 10) < 5:
 			self.tileArray[self.rect.x // 40][self.rect.y // 40] = 7
+			if self.player.rect.x // 40 == self.rect.y // 40:
+				if self.player.rect.y // 40 == self.rect.x // 40:
+					self.player.x = self.player.x - 40
+					self.player.y = self.player.y - 40
+					self.playerobj.health -= 1
 		if self.health <= 0:
 			return True, enemies, self.tileArray
 		return False, enemies, self.tileArray

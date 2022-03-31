@@ -265,6 +265,8 @@ class Game:
 				pygame.mixer.music.pause()
 
 			if self.tickspeed3 >= 10:
+				if self.nextRoom == 18 or self.nextRoom == 13:
+					self.bossBar = True
 				self.nonPassables, self.game_active = self.player.update(\
 				self.enemies, self.nonPassables, self.items, self.game_active,\
 				self.muted)
