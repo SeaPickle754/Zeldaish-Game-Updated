@@ -349,8 +349,8 @@ class Game:
 					e.rect.y += 40
 				if e.rect.y >= 400:
 					e.rect.y -= 40
-
-				if self.tickspeed4 == 100000:	self.tickspeed4 = 0
+ 
+			if self.tickspeed4 == 100000:	self.tickspeed4 = 0
 	def draw_text(self):
 		font = pygame.font.Font("other\\ARCADECLASSIC.TTF", 10)
 			

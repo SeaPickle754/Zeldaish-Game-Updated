@@ -75,7 +75,8 @@ class FirstBoss:
 			self.rect.x = randrange(0, 400, 40)
 			self.rect.y = randrange(0, 360, 40)
 		if randint(0, 10) < 5:
-			self.tileArray[self.rect.x // 40][self.rect.y // 40] = 7
+			if self.tiles[self.rect.x // 40][self.rect.y // 40].type == "DRCT":
+				self.tileArray[self.rect.x // 40][self.rect.y // 40] = 7
 			if self.player.rect.x // 40 == self.rect.y // 40:
 				if self.player.rect.y // 40 == self.rect.x // 40:
 					self.player.x = self.player.x - 40
